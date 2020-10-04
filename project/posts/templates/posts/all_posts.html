@@ -1,0 +1,16 @@
+{% extends 'site/layout.html' %}
+{% block content %}
+  <div class="row">
+  	{% for post in posts %}
+     
+     	<div class="col-sm-6">
+     		<a href="{{url_for('posts.one_post', post_id=post.id)}}"><h2>{{ post.title }}</h2></a>
+            <small>Written By <a href="#">{{ post.user.username }}</a></small>
+            <small>On {{post.date_posted}}</small>
+            <p>{{post.content}}</p>	
+     	</div>	
+
+    {% endfor %}
+  	
+  </div>
+{% endblock %}

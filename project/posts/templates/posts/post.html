@@ -1,0 +1,20 @@
+{% extends 'site/layout.html' %}
+{% block content %}
+     
+     	{% if post.user != current_user %}
+	     	<h2>{{ post.title }}</h2>
+	        <small>Written By {{ post.user.username }}</small>
+	        <small>On {{post.date_posted}}</small>
+	        <p>{{post.content}}</p>
+	        
+        {% else %}
+	        <h2>{{ post.title }}</h2>
+	        <small>Written By {{ post.user.username }}</small>
+	        <small>On {{post.date_posted}}</small>
+	        <p>{{post.content}}</p>
+	        <a href="{{url_for('posts.update_post', post_id=post.id)}}" class="btn btn-success">Update</a>
+	        <a href="{{url_for('posts.delete_post', post_id=post.id)}}" class="btn btn-danger">Delete</a>
+	    {% endif %}
+     
+  
+{% endblock content %}
